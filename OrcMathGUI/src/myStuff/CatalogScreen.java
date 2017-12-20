@@ -4,6 +4,7 @@ import java.util.List;
 
 import guiPlayer.Book;
 import guiPlayer.CatalogMaker;
+import guiPlayer.Movies;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.TextArea;
@@ -26,9 +27,9 @@ public class CatalogScreen extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		catalog  = new CatalogMaker();
 		
-		descriptionField = new TextField(40, 40, 200, 30, "Text goes here","description" );
+		descriptionField = new TextField(40, 40, 200, 30, "Text goes here","Movie title" );
 		viewObjects.add(descriptionField);
-		addButton = new Button(100,100,20,20,"add",new Action() {
+		addButton = new Button(100,100,80,80,"add",new Action() {
 		
 			public void act() {
 	//			descriptionField.setText("You did it");
@@ -38,7 +39,7 @@ public class CatalogScreen extends FullFunctionScreen {
 		});
 		
 		viewObjects.add(addButton);
-		textArea = new TextArea(200, 200, 300, 300, "Text Area");
+		textArea = new TextArea(200, 200, 300, 300, "");
 		viewObjects.add(textArea);
 	}
 
@@ -48,10 +49,10 @@ public class CatalogScreen extends FullFunctionScreen {
 	
 	protected void addButtonClicked() 
 	{
-		Book b = new Book(descriptionField.getText(),"default author", 1000);
+		Movies b = new Movies(descriptionField.getText(),"default author");
 		String s = textArea.getText()+ b+ "\n";
 		textArea.setText(s);
-		catalog.addBook(b);
+		catalog.addMovies(b);
 	}
 
 
