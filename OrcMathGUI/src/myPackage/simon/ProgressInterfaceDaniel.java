@@ -100,4 +100,11 @@ public class ProgressInterfaceDaniel implements Visible {
 
 	}
 
+
+
+	public void gameOver() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
