@@ -1,6 +1,7 @@
 package myPackage.simon;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +66,9 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 		return null;
 	}
 
+	/**
+	 * 
+	 */
 	private void addButtons() {
 		int numberOfButtons = 4;	
 		buttons = new ButtonInterfaceDaniel[numberOfButtons-1];
@@ -111,11 +115,12 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 				   sequenceIndex++;
 			   }
 			   else {
-				   progress.gameOver();
+				   progress.gameOver();			
 			   }
 			   if(sequenceIndex == moving.size()){ 
 				    Thread nextRound = new Thread(SimonScreenDaniel.this); 
 				    nextRound.start(); 
+				    
 				}
 
 			   
@@ -139,9 +144,65 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	private void nextRound() {
 		acceptingInput= false;
 		roundNumber++;
-		randomMove();
+		moving.add(randomMove());
+		setRound();
+		setSequenceSize();
+		changeText("Simon's turn");
+		text.setText("");
+		playSequence();
+		changeText("Your turn");
+		acceptingInput = true;
+		sequenceIndex = 0;
 		
-	}		
+		
+		
+	}
+
+	private void playSequence() {
+		 ButtonInterfaceDaniel b = null;
+		 
+		 for(int i = 0; i < moving.size();i++)
+		 {
+			 if(b != null)
+			 {
+				 b.dim();
+				 b.getButton();
+				 b.highlight();
+				 int sleepTime;
+				 sleepTime = roundNumber +2;
+				 try {
+						Thread.sleep(800);
+						} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						}		
+	
+			 }
+		 }
+		 b.dim();
+		 
+		
+	}
+
+	private void changeText(String string) {
+		try {
+			Thread.sleep(800);
+			} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}		
+	}
+
+	public int setSequenceSize()
+	{
+		return moving.size();
+	}
+
+	public int setRound() {
+		return roundNumber;
+	}	
+	
+	
 }
 
 

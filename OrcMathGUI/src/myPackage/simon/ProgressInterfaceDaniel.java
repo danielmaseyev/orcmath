@@ -106,5 +106,15 @@ public class ProgressInterfaceDaniel implements Visible {
 		// TODO Auto-generated method stub
 		
 	}
+	public int setRound()
+	{
+		return 0;
+		
+	}
+	public int setSequenceSize()
+	{
+		return 0;
+		
+	}
 
 }
