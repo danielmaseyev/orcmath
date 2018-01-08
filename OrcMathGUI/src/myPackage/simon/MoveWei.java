@@ -1,15 +1,14 @@
 package myPackage.simon;
 
 public class MoveWei implements MoveInterfaceDaniel {
-
-	public MoveWei() {
-		
+	private ButtonInterfaceDaniel b;
+	public MoveWei(ButtonInterfaceDaniel buttons) {
+		this.b = buttons;
 	}
 
 	@Override
 	public ButtonInterfaceDaniel getButton() {
-		// TODO Auto-generated method stub
-		return null;
+		return b;
 	}
 
 }

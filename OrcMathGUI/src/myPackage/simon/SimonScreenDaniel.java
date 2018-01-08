@@ -28,14 +28,13 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		progress = getProgress();
+		text = new TextLabel(130,230,300,40,"Let's play Simon!");
+		moving = new ArrayList<MoveInterfaceDaniel>();
 		addButtons();
 		for(ButtonInterfaceDaniel b: buttons){ 
 		    viewObjects.add(b); 
 		}
-		progress = getProgress();
-		text = new TextLabel(130,230,300,40,"Let's play Simon!");
-		moving = new ArrayList<MoveInterfaceDaniel>();
-		//add 2 moves to start
 		lastSelectedButton = -1;
 		moving.add(randomMove());
 		moving.add(randomMove());
@@ -55,7 +54,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	Placeholder until partner finishes implementation of MoveInterface
 	*/
 	private MoveInterfaceDaniel getMove(int bIndex) {
-	    return moving.get(bIndex);
+	    return new MoveWei(buttons[bIndex]);
 	}
 
 	/**
@@ -71,7 +70,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	 */
 	private void addButtons() {
 		int numberOfButtons = 4;	
-		buttons = new ButtonInterfaceDaniel[numberOfButtons-1];
+		buttons = new ButtonInterfaceDaniel[numberOfButtons];
 		Color button1 = new Color(0,0,0);
 		Color button2 = new Color(45,54,120);
 		Color button3 = new Color(68,100,32);
@@ -106,23 +105,24 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 
 							   });
 						   blink.start();
+						   if(b == moving.get(sequenceIndex).getButton()) {
+							   sequenceIndex++;
+						   }
+						   else {
+							   progress.gameOver();			
+						   }
+						   if(sequenceIndex == moving.size()){ 
+							    Thread nextRound = new Thread(SimonScreenDaniel.this); 
+							    nextRound.start(); 
+							    
+							}
 					   }
 				   }
 
 				   });
 		
-			   if(b == moving.get(sequenceIndex).getButton()) {
-				   sequenceIndex++;
-			   }
-			   else {
-				   progress.gameOver();			
-			   }
-			   if(sequenceIndex == moving.size()){ 
-				    Thread nextRound = new Thread(SimonScreenDaniel.this); 
-				    nextRound.start(); 
-				    
-				}
-
+		
+			 
 			   
 	}
 	/**
@@ -131,7 +131,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	}
 	private ButtonInterfaceDaniel getAButton() 
 	{
-		return null;
+		return new ButtonWei(0,0,100,100,"Button",null);
 		
 	}
 
