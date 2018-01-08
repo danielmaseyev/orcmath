@@ -11,7 +11,7 @@ public interface ButtonInterfaceDaniel extends Clickable {
 	void setAction(Action a);
 	void highlight();
 	void dim();
-	void getButton();
+	ButtonWei getButton();
 
 
 }

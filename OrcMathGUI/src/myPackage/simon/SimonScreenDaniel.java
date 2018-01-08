@@ -55,7 +55,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	Placeholder until partner finishes implementation of MoveInterface
 	*/
 	private MoveInterfaceDaniel getMove(int bIndex) {
-	    return null;
+	    return moving.get(bIndex);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 		{
 			final ButtonInterfaceDaniel b = getAButton();
 			buttons[i] = b;
-			  b.setColor(Color.blue); 
+			   b.setColor(Color.blue); 
 			   b.setX(5);
 			   b.setY(8);
 			 
