@@ -18,14 +18,14 @@ public class ProgressWei extends Component implements ProgressInterfaceDaniel {
 	}
 
 	@Override
-	public void setRound(int x) {
-		return;
+	public int setRound() {
+		return 0;
 
 	}
 
 	@Override
-	public void setSequenceSize(int x) {
-		return;
+	public int setSequenceSize() {
+		return 0;
 
 	}
 

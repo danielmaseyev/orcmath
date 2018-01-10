@@ -13,6 +13,7 @@ public class SimonGameDaniel extends GUIApplication {
 	public void initScreen() {
 		SimonScreenDaniel screen = new SimonScreenDaniel(getWidth(), getHeight());
 		setScreen(screen);
+		new Thread(screen).run();
 	}
 
 	public static void main(String[] args) {

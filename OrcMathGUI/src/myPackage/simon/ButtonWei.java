@@ -21,13 +21,12 @@ public class ButtonWei extends Button implements ButtonInterfaceDaniel {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void drawButton(Graphics2D g, boolean hover) {
-		
-	}
+	
 
 	@Override
 	public void setColor(Color blue) {
 		this.setBackground(blue);
+		color = blue;
 	}
 
 	@Override
@@ -40,6 +39,10 @@ public class ButtonWei extends Button implements ButtonInterfaceDaniel {
 
 	@Override
 	public void dim() {
+		int red = this.color.getRed() - 10;
+		int green = this.color.getGreen() - 10;
+		int blue = this.color.getBlue() - 10;
+		this.setColor(new Color(red, green, blue));
 		this.setColor(getColor());
 	}
 	
