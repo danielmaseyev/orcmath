@@ -1,4 +1,5 @@
 /*******************************************************************************
+ /*******************************************************************************
  * Copyright (c) 2012-2017 Benjamin Nockles
  *
  * This file is part of OrcMath.
@@ -19,10 +20,7 @@
 package com.orcmath.drawabletype;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
-import com.lessonflow.lesson.Lesson;
 import com.orcmath.drawable.CoordinateImage;
 import com.orcmath.drawable.CoordinatePoint;
 import com.orcmath.drawable.Graph;
@@ -31,7 +29,6 @@ import com.orcmath.local.Problem;
 import com.orcmath.local.WorkTable;
 import com.orcmath.objects.Format;
 import com.orcmath.objects.Ops;
-import com.orcmath.objects.Term;
 
 public class PiecewiseFunctions extends DynamicType{
 	CoordinateImage image;
