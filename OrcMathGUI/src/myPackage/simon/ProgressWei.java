@@ -32,7 +32,9 @@ public class ProgressWei extends Component implements ProgressInterfaceDaniel {
 	@Override
 	public void update(Graphics2D g) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+	
 
 }
