@@ -1,7 +1,13 @@
-//package test;
 
-//import guiTeacher.GUIApplication;
-/*public class Main extends GUIApplication {
+package test;
+
+import guiTeacher.GUIApplication;
+
+public class Main extends GUIApplication {
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 7548071104587737267L;
 
 	public Main(int width, int height) {
@@ -22,6 +28,7 @@
 	}
 
 }
+
 package test;
 
 import java.io.File;
@@ -36,9 +43,15 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class MainScreen extends FullFunctionScreen{
+
+	private TextField[] fields; 
+	private MainScreen screen;
 	private Button button;
+	private Button saveButton;
+	private FileOpenButton openButton;
 	private int score = 0;
 	private boolean ready = false;
+//	private TextArea books;
 	
 	public MainScreen(int width, int height) {
 		super(width, height);
@@ -53,12 +66,15 @@ public class MainScreen extends FullFunctionScreen{
 		viewObjects.add(timer);
 		Timer end = new Timer(timer, System.nanoTime(), 9, new Action() {
 
+			@Override
 			public void act() {
 				button.setEnabled(false);
 				button.setText("Done");
 			}
 			
 		});
+		
+		
 		Timer wait = new Timer(countdown, System.nanoTime(), 4, new Action() {
 
 			@Override
@@ -72,6 +88,8 @@ public class MainScreen extends FullFunctionScreen{
 			
 		});
 		Thread waitThread = new Thread(wait);
+		
+		
 		TextLabel scoreText = new TextLabel(40, 100, 100, 20, "Score: " + score);
 		viewObjects.add(scoreText);
 		button = new Button(40, 300, 100, 30, "Ready", new Action() {
@@ -118,6 +136,7 @@ public class Timer implements Runnable {
 	@Override
 	public void run() {
 		while (System.nanoTime() - startTime <= duration * 1E9) {
+			//ima just google a formula
 			text.setText(String.valueOf(duration - (int)((System.nanoTime() - startTime) / 1E9)));
 		}
 		action.act();
